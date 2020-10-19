@@ -1,0 +1,114 @@
+import { Menu, Container, Image, Icon } from 'semantic-ui-react';
+import Link from 'next/link';
+import Router, { useRouter } from 'next/router';
+import NProgress from 'nprogress';
+import { useContext } from 'react';
+import { UserContext } from '../../utils/UserContext';
+import { ACTION } from '../../utils/UserReducer';
+import axios from 'axios';
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
+function Header() {
+  const router = useRouter();
+  const { state, dispatch } = useContext(UserContext);
+  
+  const isActive = (route) => {
+    return route === router.pathname;
+  }
+  
+
+  return (
+    <Menu stackable fluid id="menu" inverted>
+      <Container text>
+        <Link href="/">
+          <Menu.Item header active={isActive('/')}>
+            <Image
+              size="mini"
+              src="/static/logo.svg"
+              style={{ marginRight: '1em'}}
+            />
+            ReactReserve
+          </Menu.Item>
+        </Link>
+
+        <Link href="/cart">
+          <Menu.Item header active={isActive('/cart')}>
+            <Icon 
+              name="cart"
+              size="large"
+            />
+            Cart
+          </Menu.Item>
+        </Link>
+
+        {state.authorized && (state.user.role === 'admin' || state.user.role === 'root') && <Link href="/create">
+          <Menu.Item header active={isActive('/create')}>
+            <Icon 
+              name="add square"
+              size="large"
+            />
+            Create
+          </Menu.Item>
+        </Link>}
+
+        {state.authorized? 
+        <>
+          <Link href="/account">
+            <Menu.Item header active={isActive('/account')}>
+              <Icon 
+                name="user"
+                size="large"
+              />
+              Account
+            </Menu.Item>
+          </Link>
+
+          <Menu.Item header onClick={async ()=> {
+              try {
+                await axios.get('/api/logout');
+                dispatch({ type: ACTION.CLEAR_USER})
+                window.localStorage.setItem('logout', Date.now());
+                router.push('/login');
+              }catch(err) {
+                console.log('logoutError',err)
+                dispatch({ type: ACTION.CLEAR_USER})
+                router.push('/login');
+              }          
+            }}>
+            <Icon 
+              name="sign out"
+              size="large"
+            />
+            Logout
+          </Menu.Item>
+        </>
+        :
+        <>
+          <Link href="/login">
+            <Menu.Item header active={isActive('/login')}>
+              <Icon 
+                name="sign in"
+                size="large"
+              />
+              Logoin
+            </Menu.Item>
+          </Link>
+          <Link href="/signup">
+            <Menu.Item header active={isActive('/signup')}>
+              <Icon 
+                name="signup"
+                size="large"
+              />
+              Signup
+            </Menu.Item>
+          </Link>
+        </>}
+      </Container>
+    </Menu>
+  );
+}
+
+export default Header;
