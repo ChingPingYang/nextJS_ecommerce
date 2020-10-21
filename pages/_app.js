@@ -8,6 +8,8 @@ import Router from 'next/router';
 const MyApp = ({Component, pageProps}) => {
   const [ state, dispatch ] = useReducer(userReducer, initState);
 
+  /* Send request to backend. if the request has cookie, log */
+  /* user into global state. */
   useEffect(() => {
     getUser();
   },[]);

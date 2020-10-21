@@ -8,7 +8,7 @@ const ProductPage = ({ product , state}) => {
     
     return (
         <>
-            <ProductSummary {...product} />
+            <ProductSummary {...product} user={state.user}/>
             <ProductAttributes {...product} user={state.user}/>
         </>
     )

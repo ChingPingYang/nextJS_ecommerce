@@ -22,7 +22,7 @@ function ProductAttributes({ description, _id, user }) {
     <>
       <Header as="h3">About this product</Header>
       <p>{description}</p>
-      {(user.role === 'admin' || user.role === 'root') && 
+      {(user?.role === 'admin' || user?.role === 'root') && 
         <>
           <Button icon="trash alternate outline" color="red" content="Delete Product" onClick={() => setModal(true)}/>
           <Modal open={modal} dimmer="blurring">

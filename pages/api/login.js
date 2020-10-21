@@ -13,6 +13,8 @@ export default (req, res) => {
             return handleGet(req, res);
         case "POST":
             return handlePost(req, res);
+        default: 
+            return res.status(405).json({errmsg: `Method ${req.method} not allowed`})
     }
 }
 
