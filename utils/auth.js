@@ -1,10 +1,12 @@
-const { parseCookies } = require('nookies');
 import JWT from 'jsonwebtoken';
-import { destroyCookie } from 'nookies';
+import { destroyCookie, parseCookies } from 'nookies';
 
 
 export const authorizeToken = (req, res) => {
+    
     const token = parseCookies({ req }).token;
+    
+    
     if(!token) return 'User not logged in.';
     try {
         const decoded = JWT.verify(token, process.env.JWT_SECRET);

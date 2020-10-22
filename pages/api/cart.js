@@ -1,4 +1,5 @@
 import Cart from '../../models/Cart';
+import Product from '../../models/Product';
 import { authorizeToken } from '../../utils/auth';
 import connectDB from '../../utils/connectDb';
 
@@ -24,6 +25,7 @@ const handleGet = async (req, res) => {
         const cart = await Cart.findOne({ user: response.userId}).populate('products.product');
         return res.status(200).json(cart.products);
     } catch(err) {
+        console.log(err)
         return res.status(500).json({ errmsg: "Server error... try later"});
     }
 }
