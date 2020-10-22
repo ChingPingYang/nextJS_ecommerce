@@ -20,14 +20,14 @@ export async function getServerSideProps(ctx) {
   const size = 9;
   await connectDB();
   let products = [];
-  const totalDocs = await Product.countDocuments();
+  const totalDocs = await Product.countDocuments({ deleted: false});
   const totalPages = Math.ceil(totalDocs / size);
   try {
     if(page === 1) {
-       products = await Product.find().limit(size);
+       products = await Product.find({ deleted: false}).limit(size);
     } else {
       const skips = size * (page - 1);
-      products = await Product.find().skip(skips).limit(size);
+      products = await Product.find({ deleted: false}).skip(skips).limit(size);
     }
     return {
       props: {

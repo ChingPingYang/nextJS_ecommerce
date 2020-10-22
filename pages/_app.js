@@ -17,7 +17,6 @@ const MyApp = ({Component, pageProps}) => {
   const getUser = async () => {
     try {
       const res = await axios.get('/api/login');
-      console.log('front _app okay:',res);
       dispatch({ type: ACTION.SET_USER, payload: res.data});
     }catch(err) {
       console.log('front  err')

@@ -21,6 +21,10 @@ const ProductSchema = new Schema({
     },
     mediaUrl: {
         type: String
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 })
 
