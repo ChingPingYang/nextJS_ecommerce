@@ -2,13 +2,13 @@ import Head from "next/head";
 import { Container } from "semantic-ui-react";
 
 import Header from "./Header";
-import getHead from "./HeadContent";
+import headContent from "./headContent";
 
 function Layout({ children }) {
   return (
     <>
       <Head>
-        {getHead()}
+        {headContent()}
         {/* Stylesheets */}
         <link rel="stylesheet" type="text/css" href="/static/styles.css" />
         <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
