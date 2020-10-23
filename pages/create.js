@@ -11,7 +11,7 @@ const INITIAL_PRODUCT = {
   description: ""
 }
 
-function CreateProduct({ state, dispatch }) {
+function CreateProduct({ state }) {
   const [product, setProduct] = useState(INITIAL_PRODUCT);
   const [mediaPreview, setMediaPreview] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -55,7 +55,7 @@ function CreateProduct({ state, dispatch }) {
       
       // const config = { headers: {"Content-Type": "application/json"}};
       const body = {name: product.name, price: product.price, description: product.description, mediaUrl};
-      const res = await axios.post('/api/product', body);
+      await axios.post('/api/product', body);
       setProduct(INITIAL_PRODUCT);
       setSuccess(true);
     } catch(err) {

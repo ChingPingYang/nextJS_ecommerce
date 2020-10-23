@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import uuidv4 from 'uuid/v4';
 import Cart from '../../models/Cart';
 import Order from '../../models/Order';
-import calculateCartTotal from '../../utils/calculateCartTotal';
+import {getTotalPrice} from '../../utils/calculateCartTotal';
 import connectDB from '../../utils/connectDb';
 import { authorizeToken } from '../../utils/auth';
 
@@ -29,7 +29,7 @@ const handlePost = async (req, res) => {
         const cart = await Cart.findOne({ user: response.userId }).populate('products.product');
         if(!cart) return res.status(403).json({errmsg: "No cart matched..."});
         // 3) Get total price
-        const { cartTotal , stripeTotal } = calculateCartTotal(cart.products);
+        const { cartTotal , stripeTotal } = getTotalPrice(cart.products);
         // 4) Get email from paymentData, see if email linked with existing Strinpe customer
         const prevCustomer = await stripe.customers.list({
             email: paymentData.email,

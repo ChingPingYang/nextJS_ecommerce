@@ -1,4 +1,4 @@
-const getTotalPrice = (products) => {
+export const getTotalPrice = (products) => {
     const  total = products.reduce((acc, p) => {
         acc += p.product.price * p.quantity
         return acc
@@ -10,5 +10,3 @@ const getTotalPrice = (products) => {
         stripeTotal
     }
 }
-
-export default getTotalPrice;

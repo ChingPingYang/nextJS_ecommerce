@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import { useContext } from 'react';
-import { userContext } from '../../utils/userContext';
+import UserContext from '../../utils/UserContext';
 import { ACTION } from '../../utils/userReducer';
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function Header() {
   const router = useRouter();
-  const { state, dispatch } = useContext(userContext);
+  const { state, dispatch } = useContext(UserContext);
   
   const isActive = (route) => {
     return route === router.pathname;

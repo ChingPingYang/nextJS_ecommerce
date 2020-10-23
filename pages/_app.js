@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import { userContext } from '../utils/userContext';
+import UserContext from '../utils/UserContext';
 import { userReducer, initState, ACTION } from '../utils/userReducer';
 import Layout from "../components/_App/Layout";
 import axios from 'axios';
@@ -39,11 +39,11 @@ const MyApp = ({Component, pageProps}) => {
   }
 
   return (
-    <userContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={{ state, dispatch }}>
       <Layout>
         {!state.loading && <Component {...pageProps} state={state} dispatch={dispatch}/>}
       </Layout>
-    </userContext.Provider>
+    </UserContext.Provider>
   )
 }
 
