@@ -14,10 +14,12 @@ const ProductPage = ({ product , state}) => {
     )
 }
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
+    // Really important... connectDB first!
     connectDB()
     try {
-        const products = await Product.find();
+        let products = await Product.find();
+        products = JSON.parse(JSON.stringify(products));
         const paths = products.map(p => ({params: {product: p._id.toString()}}));
         return {
             paths,
@@ -30,6 +32,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (ctx) => {
     const { product: id } = ctx.params;
+    // Really important... connectDB first!
+    connectDB()
     try {
         const product = await Product.findById(id);
         return {
