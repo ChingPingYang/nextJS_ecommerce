@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { UserContext } from '../utils/UserContext';
-import { userReducer, initState, ACTION } from '../utils/UserReducer';
+import { userReducer, initState, ACTION } from '../utils/userReducer';
 import Layout from "../components/_App/Layout";
 import axios from 'axios';
 import Router from 'next/router';

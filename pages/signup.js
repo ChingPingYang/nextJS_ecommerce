@@ -3,7 +3,7 @@ import { Button, Form, Icon, Message, Segment } from "semantic-ui-react";
 import Link from "next/link";
 import axios from "axios";
 import catchErrors from "../utils/catchErrors";
-import { ACTION } from '../utils/UserReducer';
+import { ACTION } from '../utils/userReducer';
 import { useRouter } from 'next/router';
 
 const INITIAL_USER = {

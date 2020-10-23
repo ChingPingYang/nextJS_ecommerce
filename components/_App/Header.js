@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
-import { ACTION } from '../../utils/UserReducer';
+import { ACTION } from '../../utils/userReducer';
 import axios from 'axios';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
