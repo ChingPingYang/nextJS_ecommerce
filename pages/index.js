@@ -37,7 +37,7 @@ export async function getServerSideProps(ctx) {
       }
     }
   }catch(err) {
-    console.log('err???:',err)
+    // console.log('err???:',err)
   }
 }
 

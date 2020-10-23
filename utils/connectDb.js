@@ -4,7 +4,7 @@ const connection = {};
 
 const connectDB = async () => {
     if(connection.isConnected) {
-        console.log('DB was connected@@');
+        // console.log('DB was connected@@');
         return
     }
     try {
@@ -15,9 +15,9 @@ const connectDB = async () => {
             useFindAndModify: false
         });
         connection.isConnected = db.connections[0].readyState;
-        console.log('DB connected');
+        // console.log('DB connected');
     } catch(err) {
-        console.log('Failed to connect to DB...');
+        // console.log('Failed to connect to DB...');
     }
 }
 

@@ -24,7 +24,7 @@ export const getStaticPaths = async () => {
             fallback: true
         }
     } catch(err) {
-        console.log('Err at getStaticPaths');
+        // console.log('Err at getStaticPaths');
     }
 }
 
@@ -38,7 +38,7 @@ export const getStaticProps = async (ctx) => {
             }
         }
     } catch(err) {
-        console.log('Err at getStaticProps');
+        // console.log('Err at getStaticProps');
         return {
             props: {
                 product: ""

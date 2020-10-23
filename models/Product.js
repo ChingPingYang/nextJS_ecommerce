@@ -32,9 +32,7 @@ let Product;
 
 try {
     Product = mongoose.model('products');
-    console.log('111111111')
 }catch(e) {
     Product = mongoose.model('products', ProductSchema);
-    console.log('22222222')
 }
 export default Product;

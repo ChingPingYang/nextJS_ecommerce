@@ -45,7 +45,6 @@ const handlePost = async (req, res) => {
             })
         }
         const customer = (isExist && prevCustomer.data[0].id) || newCustomer.id;
-        console.log('Custormer: ',customer)
         // 6) Create charge with total, send receipt email
         await stripe.charges.create({
             currency: "cad",
@@ -69,7 +68,7 @@ const handlePost = async (req, res) => {
         // 9) Send back response
         return res.status(200).json({msg: 'Checkout successful'});
     }catch(err) {
-        console.log(err);
+        // console.log(err);
         return res.status(500).json({errmsg: 'server error'});
     }
 

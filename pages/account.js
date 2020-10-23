@@ -12,7 +12,7 @@ function Account({ state }) {
         const res = await axios.get('/api/orders');
         setOrders(res.data);
       } catch(err){
-        console.log(err);
+        // console.log(err);
       }
     }
     getOrders();

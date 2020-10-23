@@ -28,7 +28,7 @@ const handleGet = async (req, res) => {
         const user = await User.findById(response.userId);
         res.status(200).json(user);
     } catch(err) {
-        console.log(err)
+        // console.log(err)
         return res.status(500).json({ errmsg: "Server error... try later"});
     }   
 }
@@ -63,7 +63,7 @@ const handlePost = async (req, res) => {
         const userWithNoPassword = { _id: user._id, name: user.name, email: user.email, role: user.role}
         return res.status(201).json(userWithNoPassword);
     } catch(err) {
-        console.log(err)
+        // console.log(err)
         return res.status(500).json({ errmsg: "Server error... try later"});
     }
 };

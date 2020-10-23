@@ -25,7 +25,7 @@ const handleGet = async (req, res) => {
         const cart = await Cart.findOne({ user: response.userId}).populate('products.product');
         return res.status(200).json(cart.products);
     } catch(err) {
-        console.log(err)
+        // console.log(err)
         return res.status(500).json({ errmsg: "Server error... try later"});
     }
 }
@@ -69,7 +69,7 @@ const handleDelete = async (req, res) => {
         return res.status(200).json(cart.products);
         
     } catch(err) {
-        console.log(err)
+        // console.log(err)
         return res.status(500).json({ errmsg: "Server error... try later"});
     }
 }

@@ -25,10 +25,9 @@ function Cart({ state }) {
   const handleDeleteProductFromCart = async (productId) =>{
     try {
       const res = await axios.delete('/api/cart', { data: { productId }});
-      console.log(res.data)
       setProducts(res.data);
     } catch(err) {
-      console.log(err)
+      // console.log(err)
     }
   }
   const handleCheckout = async (paymentData) => {

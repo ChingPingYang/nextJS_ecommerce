@@ -56,7 +56,6 @@ function CreateProduct({ state, dispatch }) {
       // const config = { headers: {"Content-Type": "application/json"}};
       const body = {name: product.name, price: product.price, description: product.description, mediaUrl};
       const res = await axios.post('/api/product', body);
-      console.log('Done:', res);
       setProduct(INITIAL_PRODUCT);
       setSuccess(true);
     } catch(err) {

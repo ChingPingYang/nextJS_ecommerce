@@ -22,7 +22,7 @@ const handleGet = async (req, res) => {
         const orders = await Order.find({ user: response.userId}).sort({ createdAt: 'desc'}).populate('products.product');
         return res.status(200).json(orders);
     }catch(err) {
-        console.log('HERE',err)
+        
         return res.status(500).json({ errmsg: "Server error... try later"});
     }
 }

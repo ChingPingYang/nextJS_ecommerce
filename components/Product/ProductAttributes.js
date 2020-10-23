@@ -11,7 +11,6 @@ function ProductAttributes({ description, _id, user }) {
     const payload = { params: {_id}};
     try {
       const res = await axios.delete('/api/product', payload)
-      console.log(res)
       router.push('/');
     } catch(err) {
       console.log('err');
