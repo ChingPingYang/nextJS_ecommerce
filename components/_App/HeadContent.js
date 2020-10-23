@@ -1,6 +1,7 @@
-export default () => (
+
+const getHead = () =>(
   <>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
     <meta charSet="utf-8" />
     <link
       rel="apple-touch-icon"
@@ -56,3 +57,4 @@ export default () => (
     <meta name="theme-color" content="#00df94" />
   </>
 );
+export default getHead;
